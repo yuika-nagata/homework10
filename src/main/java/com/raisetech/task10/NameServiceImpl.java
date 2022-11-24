@@ -19,8 +19,8 @@ public class NameServiceImpl implements NameService {
         return nameMapper.findAll();
     }
 
-    @Override
-    public Optional<Name> findById(int id) {
-        return nameMapper.findById(id);
+    public Name findById(int id) {
+        Optional<Name> user = nameMapper.findById(id);
+        return nameMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found"));
     }
 }
