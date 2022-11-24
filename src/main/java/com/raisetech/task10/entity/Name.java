@@ -1,4 +1,4 @@
-package com.raisetech.task10;
+package com.raisetech.task10.entity;
 
 public class Name {
     private final String id;

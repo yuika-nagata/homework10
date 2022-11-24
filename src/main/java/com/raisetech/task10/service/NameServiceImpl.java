@@ -1,5 +1,8 @@
-package com.raisetech.task10;
+package com.raisetech.task10.service;
 
+import com.raisetech.task10.exception.ResourceNotFoundException;
+import com.raisetech.task10.entity.Name;
+import com.raisetech.task10.mapper.NameMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +22,7 @@ public class NameServiceImpl implements NameService {
         return nameMapper.findAll();
     }
 
+    @Override
     public Name findById(int id) {
         Optional<Name> user = nameMapper.findById(id);
         return nameMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found"));

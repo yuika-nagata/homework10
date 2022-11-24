@@ -1,4 +1,6 @@
-package com.raisetech.task10;
+package com.raisetech.task10.service;
+
+import com.raisetech.task10.entity.Name;
 
 import java.util.List;
 

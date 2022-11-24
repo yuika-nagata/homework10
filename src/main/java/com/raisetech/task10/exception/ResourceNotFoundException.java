@@ -1,4 +1,4 @@
-package com.raisetech.task10;
+package com.raisetech.task10.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
 
@@ -17,5 +17,4 @@ public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(Throwable cause) {
         super(cause);
     }
-
 }

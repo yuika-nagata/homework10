@@ -1,5 +1,6 @@
-package com.raisetech.task10;
+package com.raisetech.task10.mapper;
 
+import com.raisetech.task10.entity.Name;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
