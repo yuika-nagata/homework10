@@ -1,12 +1,13 @@
 package com.raisetech.task10.controller;
 
+import com.raisetech.task10.CreateForm;
 import com.raisetech.task10.service.NameService;
-import com.raisetech.task10.entity.Name;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import com.raisetech.task10.entity.Student;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class NameController {
@@ -18,12 +19,18 @@ public class NameController {
     }
 
     @GetMapping("/names")
-    public List<Name> getNames() {
+    public List<Student> getNames() {
         return nameService.findAll();
     }
 
     @GetMapping("/names/{id}")
-    public Name getUser(@PathVariable("id") int id) throws Exception {
+    public Student getUser(@PathVariable("id") int id) throws Exception {
         return nameService.findById(id);
+    }
+
+    @PostMapping
+    public Map<String, String> createUser(@RequestBody @Validated CreateForm form) {
+        nameService.createUser(form);
+        return Map.of("message", "登録が完了しました。");
     }
 }

@@ -1,6 +1,8 @@
 package com.raisetech.task10.mapper;
 
-import com.raisetech.task10.entity.Name;
+import com.raisetech.task10.CreateForm;
+import com.raisetech.task10.entity.Student;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -10,8 +12,11 @@ import java.util.Optional;
 @Mapper
 public interface NameMapper {
     @Select("SELECT * FROM names")
-    List<Name> findAll();
+    List<Student> findAll();
 
     @Select("SELECT * FROM names WHERE id = #{id}")
-    Optional<Name> findById(int id);
+    Optional<Student> findById(int id);
+
+    @Insert("INSERT INTO names (name) VALUES (#{name})")
+    void create(CreateForm form);
 }

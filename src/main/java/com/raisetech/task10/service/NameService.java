@@ -1,11 +1,14 @@
 package com.raisetech.task10.service;
 
-import com.raisetech.task10.entity.Name;
+import com.raisetech.task10.CreateForm;
+import com.raisetech.task10.entity.Student;
 
 import java.util.List;
 
 public interface NameService {
-    List<Name> findAll();
+    List<Student> findAll();
 
-    Name findById(int id);
+    Student findById(int id);
+
+    void createUser(CreateForm form);
 }
