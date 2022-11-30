@@ -10,6 +10,8 @@ public interface NameService {
 
     Student findById(int id);
 
+    String createId();
+
     void createUser(CreateForm name);
 
 }

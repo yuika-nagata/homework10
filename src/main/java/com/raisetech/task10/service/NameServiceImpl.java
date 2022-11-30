@@ -30,6 +30,11 @@ public class NameServiceImpl implements NameService {
     }
 
     @Override
+    public String createId() {
+        return nameMapper.createId();
+    }
+
+    @Override
     public void createUser(CreateForm name) {
         nameMapper.create(name);
     }

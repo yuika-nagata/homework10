@@ -35,7 +35,7 @@ public class NameController {
     public ResponseEntity<Map<String, String>> createUser(@RequestBody @Validated CreateForm name, UriComponentsBuilder uriBuilder) {
         nameService.createUser(name);
         URI url = uriBuilder
-                .path("names/id")
+                .path("names/" + nameService.createId())
                 .build()
                 .toUri();
         return ResponseEntity.created(url).body(Map.of("message", "登録が完了しました。"));

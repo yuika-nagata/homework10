@@ -17,6 +17,9 @@ public interface NameMapper {
     @Select("SELECT * FROM names WHERE id = #{id}")
     Optional<Student> findById(int id);
 
+    @Select("SELECT LAST_INSERT_ID()")
+    String createId();
+
     @Insert("INSERT INTO names (name) VALUES (#{name})")
     void create(CreateForm name);
 }
