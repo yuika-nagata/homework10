@@ -29,8 +29,8 @@ public class NameController {
     }
 
     @PostMapping
-    public Map<String, String> createUser(@RequestBody @Validated CreateForm form) {
-        nameService.createUser(form);
+    public Map<String, String> createUser(@RequestBody @Validated CreateForm name) {
+        nameService.createUser(name);
         return Map.of("message", "登録が完了しました。");
     }
 }

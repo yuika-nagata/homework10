@@ -1,8 +1,8 @@
 package com.raisetech.task10.service;
 
 import com.raisetech.task10.CreateForm;
-import com.raisetech.task10.exception.ResourceNotFoundException;
 import com.raisetech.task10.entity.Student;
+import com.raisetech.task10.exception.ResourceNotFoundException;
 import com.raisetech.task10.mapper.NameMapper;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +30,7 @@ public class NameServiceImpl implements NameService {
     }
 
     @Override
-    public void createUser(CreateForm form) {
-        nameMapper.create(form);
+    public void createUser(CreateForm name) {
+        nameMapper.create(name);
     }
 }

@@ -18,5 +18,5 @@ public interface NameMapper {
     Optional<Student> findById(int id);
 
     @Insert("INSERT INTO names (name) VALUES (#{name})")
-    void create(CreateForm form);
+    void create(CreateForm name);
 }
