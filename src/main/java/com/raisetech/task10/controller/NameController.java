@@ -1,6 +1,6 @@
 package com.raisetech.task10.controller;
 
-import com.raisetech.task10.CreateForm;
+import com.raisetech.task10.form.CreateForm;
 import com.raisetech.task10.service.NameService;
 import com.raisetech.task10.entity.Student;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +35,7 @@ public class NameController {
     public ResponseEntity<Map<String, String>> createUser(@RequestBody @Validated CreateForm name, UriComponentsBuilder uriBuilder) {
         nameService.createUser(name);
         URI url = uriBuilder
-                .path("names/" + nameService.createId())
+                .path("names/" + name.getId())
                 .build()
                 .toUri();
         return ResponseEntity.created(url).body(Map.of("message", "登録が完了しました。"));

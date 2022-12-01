@@ -1,10 +1,8 @@
 package com.raisetech.task10.mapper;
 
-import com.raisetech.task10.CreateForm;
+import com.raisetech.task10.form.CreateForm;
 import com.raisetech.task10.entity.Student;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,9 +15,8 @@ public interface NameMapper {
     @Select("SELECT * FROM names WHERE id = #{id}")
     Optional<Student> findById(int id);
 
-    @Select("SELECT LAST_INSERT_ID()")
-    String createId();
-
     @Insert("INSERT INTO names (name) VALUES (#{name})")
-    void create(CreateForm name);
+    @Options(useGeneratedKeys = true, keyProperty = "id")
+    void createUser(CreateForm name);
+
 }

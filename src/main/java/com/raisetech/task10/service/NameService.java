@@ -1,7 +1,7 @@
 package com.raisetech.task10.service;
 
-import com.raisetech.task10.CreateForm;
 import com.raisetech.task10.entity.Student;
+import com.raisetech.task10.form.CreateForm;
 
 import java.util.List;
 
@@ -9,8 +9,6 @@ public interface NameService {
     List<Student> findAll();
 
     Student findById(int id);
-
-    String createId();
 
     void createUser(CreateForm name);
 
