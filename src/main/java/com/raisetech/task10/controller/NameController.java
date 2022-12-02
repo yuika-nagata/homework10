@@ -40,4 +40,10 @@ public class NameController {
                 .toUri();
         return ResponseEntity.created(url).body(Map.of("message", "登録が完了しました。"));
     }
+
+    @PatchMapping("/{id}")
+    public Map<String, String> updateUser(@PathVariable("id") int id, @RequestBody @Validated CreateForm name) {
+        nameService.updateUser(id, name);
+        return Map.of("message", "更新が完了しました。");
+    }
 }
