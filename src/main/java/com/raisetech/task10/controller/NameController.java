@@ -31,7 +31,7 @@ public class NameController {
         return nameService.findById(id);
     }
 
-    @PostMapping
+    @PostMapping("/names")
     public ResponseEntity<Map<String, String>> createUser(@RequestBody @Validated CreateForm name, UriComponentsBuilder uriBuilder) {
         nameService.createUser(name);
         URI url = uriBuilder
