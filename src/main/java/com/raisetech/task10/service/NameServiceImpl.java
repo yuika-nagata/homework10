@@ -39,4 +39,10 @@ public class NameServiceImpl implements NameService {
         nameMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found"));
         nameMapper.update(name);
     }
+
+    @Override
+    public void deleteById(int id) {
+        nameMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found"));
+        nameMapper.deleteById(id);
+    }
 }
