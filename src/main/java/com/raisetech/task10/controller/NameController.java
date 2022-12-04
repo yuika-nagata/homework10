@@ -48,7 +48,7 @@ public class NameController {
     }
 
     @DeleteMapping("names/{id}")
-    public Map<String, String> deleteUser(@PathVariable int id) {
+    public Map<String, String> deleteUser(@PathVariable int id) throws Exception {
         nameService.deleteById(id);
         return Map.of("message", "削除しました。");
     }
