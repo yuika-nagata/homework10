@@ -21,4 +21,7 @@ public interface NameMapper {
 
     @Update("UPDATE names SET name = #{name} WHERE id = #{id}")
     void update(CreateForm name);
+
+    @Delete("DELETE FROM names WHERE id = #{id}")
+    void deleteById(int id);
 }

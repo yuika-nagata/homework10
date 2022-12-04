@@ -46,4 +46,10 @@ public class NameController {
         nameService.updateUser(id, name);
         return Map.of("message", "更新が完了しました。");
     }
+
+    @DeleteMapping("names/{id}")
+    public Map<String, String> deleteUser(@PathVariable int id) throws Exception {
+        nameService.deleteById(id);
+        return Map.of("message", "削除しました。");
+    }
 }

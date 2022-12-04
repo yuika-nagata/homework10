@@ -14,4 +14,6 @@ public interface NameService {
 
     void updateUser(int id, CreateForm name);
 
+    void deleteById(int id);
+
 }
