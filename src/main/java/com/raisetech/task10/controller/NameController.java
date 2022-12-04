@@ -31,7 +31,7 @@ public class NameController {
         return nameService.findById(id);
     }
 
-    @PostMapping
+    @PostMapping("/names")
     public ResponseEntity<Map<String, String>> createUser(@RequestBody @Validated CreateForm name, UriComponentsBuilder uriBuilder) {
         nameService.createUser(name);
         URI url = uriBuilder
@@ -39,5 +39,11 @@ public class NameController {
                 .build()
                 .toUri();
         return ResponseEntity.created(url).body(Map.of("message", "登録が完了しました。"));
+    }
+
+    @PatchMapping("names/{id}")
+    public Map<String, String> updateUser(@PathVariable("id") int id, @RequestBody @Validated CreateForm name) {
+        nameService.updateUser(id, name);
+        return Map.of("message", "更新が完了しました。");
     }
 }

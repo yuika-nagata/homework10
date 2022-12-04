@@ -33,4 +33,10 @@ public class NameServiceImpl implements NameService {
     public void createUser(CreateForm name) {
         nameMapper.createUser(name);
     }
+
+    @Override
+    public void updateUser(int id, CreateForm name) {
+        nameMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found"));
+        nameMapper.update(name);
+    }
 }

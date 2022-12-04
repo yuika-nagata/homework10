@@ -19,4 +19,6 @@ public interface NameMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void createUser(CreateForm name);
 
+    @Update("UPDATE names SET name = #{name} WHERE id = #{id}")
+    void update(CreateForm name);
 }

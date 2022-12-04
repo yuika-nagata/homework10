@@ -12,4 +12,6 @@ public interface NameService {
 
     void createUser(CreateForm name);
 
+    void updateUser(int id, CreateForm name);
+
 }
