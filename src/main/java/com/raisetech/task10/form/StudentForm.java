@@ -4,7 +4,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
 
-public class CreateForm {
+public class StudentForm {
 
     //名前が20文字以内の場合
     //エラーにならない
@@ -14,7 +14,7 @@ public class CreateForm {
     @Length(max = 20)
     private String name;
 
-    public CreateForm(String name, String id) {
+    public StudentForm(String name, String id) {
         this.name = name;
         this.id = id;
     }

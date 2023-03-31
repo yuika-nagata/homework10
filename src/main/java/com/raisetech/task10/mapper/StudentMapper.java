@@ -1,6 +1,6 @@
 package com.raisetech.task10.mapper;
 
-import com.raisetech.task10.form.CreateForm;
+import com.raisetech.task10.form.StudentForm;
 import com.raisetech.task10.entity.Student;
 import org.apache.ibatis.annotations.*;
 
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Mapper
-public interface NameMapper {
+public interface StudentMapper {
     //Studentテーブルにレコードがある時
     //全て取得すること
     //Studentsテーブルにレコードが無いとき
@@ -26,14 +26,14 @@ public interface NameMapper {
     //指定した名前で新しくユーザーが登録できること
     @Insert("INSERT INTO names (name) VALUES (#{name})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    void createUser(CreateForm name);
+    void createUser(StudentForm name);
 
     //指定したidに紐ずくユーザーが存在する時
     //更新できること
     //指定したidに紐ずくユーザーが存在しない時
     //更新されないこと
     @Update("UPDATE names SET name = #{name} WHERE id = #{id}")
-    void update(CreateForm name);
+    void update(StudentForm name);
 
     //指定したidに紐ずくユーザーが存在する時
     //削除する

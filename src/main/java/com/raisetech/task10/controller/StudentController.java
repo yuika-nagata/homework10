@@ -1,7 +1,7 @@
 package com.raisetech.task10.controller;
 
-import com.raisetech.task10.form.CreateForm;
-import com.raisetech.task10.service.NameService;
+import com.raisetech.task10.form.StudentForm;
+import com.raisetech.task10.service.StudentService;
 import com.raisetech.task10.entity.Student;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -13,12 +13,12 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-public class NameController {
+public class StudentController {
 
-    private final NameService nameService;
+    private final StudentService studentService;
 
-    public NameController(NameService nameService) {
-        this.nameService = nameService;
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
     }
 
     //Studentテーブルにレコードが存在する時
@@ -27,7 +27,7 @@ public class NameController {
     //空のリストが返ってくること
     @GetMapping("/names")
     public List<Student> getNames() {
-        return nameService.findAll();
+        return studentService.findAll();
     }
 
     //指定したidのレコードが存在存在する時
@@ -36,13 +36,13 @@ public class NameController {
     //例外をthrowすること
     @GetMapping("/names/{id}")
     public Student getUser(@PathVariable("id") int id) throws Exception {
-        return nameService.findById(id);
+        return studentService.findById(id);
     }
 
     //指定した名前でユーザーが登録でき、レスポンスボディに"登録が完了しました"とメッセージが返ってくること
     @PostMapping("/names")
-    public ResponseEntity<Map<String, String>> createUser(@RequestBody @Validated CreateForm name, UriComponentsBuilder uriBuilder) {
-        nameService.createUser(name);
+    public ResponseEntity<Map<String, String>> createUser(@RequestBody @Validated StudentForm name, UriComponentsBuilder uriBuilder) {
+        studentService.createUser(name);
         URI url = uriBuilder
                 .path("names/" + name.getId())
                 .build()
@@ -55,8 +55,8 @@ public class NameController {
     //指定したidに紐ずくユーザーが存在しない時
     //更新できないこと
     @PatchMapping("names/{id}")
-    public Map<String, String> updateUser(@PathVariable("id") int id, @RequestBody @Validated CreateForm name) {
-        nameService.updateUser(id, name);
+    public Map<String, String> updateUser(@PathVariable("id") int id, @RequestBody @Validated StudentForm name) {
+        studentService.updateUser(id, name);
         return Map.of("message", "更新が完了しました。");
     }
 
@@ -66,7 +66,7 @@ public class NameController {
     //削除されないこと
     @DeleteMapping("names/{id}")
     public Map<String, String> deleteUser(@PathVariable int id) throws Exception {
-        nameService.deleteById(id);
+        studentService.deleteById(id);
         return Map.of("message", "削除しました。");
     }
 }
