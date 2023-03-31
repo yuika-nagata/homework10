@@ -6,6 +6,10 @@ import javax.validation.constraints.NotBlank;
 
 public class CreateForm {
 
+    //名前が20文字以内の場合
+    //エラーにならない
+    //名前が20文字以上だった場合
+    //エラーになる
     @NotBlank
     @Length(max = 20)
     private String name;
