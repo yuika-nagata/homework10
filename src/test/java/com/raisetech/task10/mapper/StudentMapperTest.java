@@ -6,6 +6,7 @@ import com.github.database.rider.spring.api.DBRider;
 import com.raisetech.task10.entity.Student;
 import com.raisetech.task10.form.StudentForm;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
@@ -76,7 +77,11 @@ class StudentMapperTest {
     @DataSet(value = "datasets/students.yml")
     @ExpectedDataSet(value = "expectedAfterDeleteStudents.yml")
     void 名前が削除できること() {
+        assertThat(studentMapper.findAll())
+                .hasSize(3);
         studentMapper.deleteById(1);
+        assertThat(studentMapper.findAll())
+                .hasSize(2);
     }
 
 }
