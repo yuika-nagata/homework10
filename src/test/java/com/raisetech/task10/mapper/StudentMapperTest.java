@@ -49,7 +49,7 @@ class StudentMapperTest {
 
     @Test
     @DataSet(value = "datasets/students.yml")
-    void 引数のidに対応した名前を取得できること() {
+    void 指定したidに対応した名前を取得できること() {
         Optional<Student> student = studentMapper.findById(1);
         assertThat(student).contains(student.get());
     }
@@ -57,7 +57,7 @@ class StudentMapperTest {
     @Test
     @DataSet(value = "datasets/empty.yml")
     @ExpectedDataSet(value = "expectedAfterInsertStudents.yml", ignoreCols = "id")
-    void 名前が登録できること() {
+    void ユーザーが登録できること() {
         studentMapper.createUser(new StudentForm("nagata", "1"));
         assertThat(studentMapper.findById(1)).isNotNull();
         studentMapper.createUser(new StudentForm("tanaka", "2"));
@@ -76,7 +76,7 @@ class StudentMapperTest {
     @Test
     @DataSet(value = "datasets/students.yml")
     @ExpectedDataSet(value = "expectedAfterDeleteStudents.yml")
-    void 名前が削除できること() {
+    void ユーザーが削除できること() {
         assertThat(studentMapper.findAll())
                 .hasSize(3);
         studentMapper.deleteById(1);

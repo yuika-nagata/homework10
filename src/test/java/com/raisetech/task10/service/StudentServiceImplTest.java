@@ -51,7 +51,7 @@ class StudentServiceImplTest {
     }
 
     @Test
-    public void 名前が登録ができること() {
+    public void ユーザーが登録ができること() {
 
         StudentForm user = new StudentForm("name", "id");
         doNothing().when(studentMapper).createUser(user);
@@ -77,7 +77,7 @@ class StudentServiceImplTest {
     }
 
     @Test
-    public void 名前が削除できること() {
+    public void ユーザーが削除できること() {
         doReturn(Optional.of(new Student("1", "nagata"))).when(studentMapper).findById(1);
         nameServiceImpl.deleteById(1);
         verify(studentMapper).deleteById(1);
