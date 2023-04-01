@@ -27,7 +27,7 @@ class StudentServiceImplTest {
     StudentMapper studentMapper;
 
     @Test
-    public void Studentテーブルにレコードがある時全てのユーザーがリストで返えされること() {
+    public void 全てのユーザーがリストで返えされること() {
         List<Student> user = List.of(new Student("1", "nagata"), new Student("2", "tanaka"));
         doReturn(user).when(studentMapper).findAll();
         List<Student> actual = nameServiceImpl.findAll();
@@ -35,7 +35,7 @@ class StudentServiceImplTest {
     }
 
     @Test
-    public void Studentテーブルに指定したidのレコードが存在する時にOptionalで返す() {
+    public void 指定したidが存在する時指定のユーザーを返すこと() {
         Student user = new Student("1", "nagata");
         doReturn(Optional.of(user)).when(studentMapper).findById(1);
         Student actual = nameServiceImpl.findById(1);
