@@ -30,7 +30,7 @@ public class StudentController {
         return studentService.findAll();
     }
 
-    //指定したidのレコードが存在存在する時
+    //指定したidのレコードが存在する時
     //取得できること
     //指定したidのレコードが存在しない時
     //例外をthrowすること
@@ -50,9 +50,9 @@ public class StudentController {
         return ResponseEntity.created(url).body(Map.of("message", "登録が完了しました。"));
     }
 
-    //指定したidに紐ずくユーザーが存在する時
+    //指定したidに紐づくユーザーが存在する時
     //更新できること
-    //指定したidに紐ずくユーザーが存在しない時
+    //指定したidに紐づくユーザーが存在しない時
     //更新できないこと
     @PatchMapping("names/{id}")
     public Map<String, String> updateUser(@PathVariable("id") int id, @RequestBody @Validated StudentForm name) {
@@ -60,9 +60,9 @@ public class StudentController {
         return Map.of("message", "更新が完了しました。");
     }
 
-    //指定したidに紐ずくユーザーが存在する時
+    //指定したidに紐づくユーザーが存在する時
     //削除できること
-    //指定したidに紐ずくユーザーが存在しない時
+    //指定したidに紐づくユーザーが存在しない時
     //削除されないこと
     @DeleteMapping("names/{id}")
     public Map<String, String> deleteUser(@PathVariable int id) throws Exception {

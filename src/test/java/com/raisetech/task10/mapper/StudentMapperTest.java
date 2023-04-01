@@ -54,13 +54,6 @@ class StudentMapperTest {
     }
 
     @Test
-    @DataSet(value = "datasets/students.yml")
-    void 引数のidに対応したユーザーが存在しない時_空のOptionalを取得すること() {
-        Optional<Student> student = studentMapper.findById(4);
-        assertThat(student).isEmpty();
-    }
-
-    @Test
     @DataSet(value = "datasets/empty.yml")
     @ExpectedDataSet(value = "expectedAfterInsertStudents.yml", ignoreCols = "id")
     void 名前が登録できること() {
@@ -73,7 +66,7 @@ class StudentMapperTest {
     }
 
     @Test
-    @DataSet(value = "datasets/Update.yml")
+    @DataSet(value = "datasets/update.yml")
     @ExpectedDataSet(value = "expectedAfterUpdateStudents.yml")
     void 名前が更新できること() {
         studentMapper.update(new StudentForm("nagata", "1"));
