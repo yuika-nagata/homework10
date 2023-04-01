@@ -9,17 +9,17 @@ import java.util.Optional;
 
 @Mapper
 public interface StudentMapper {
-    //Studentテーブルにレコードがある時
-    //全て取得すること
-    //Studentsテーブルにレコードが無いとき
-    //空のListを返すこと
+    /*Studentテーブルにレコードがある時
+    全て取得すること
+    Studentsテーブルにレコードが無いとき
+    空のListを返すこと*/
     @Select("SELECT * FROM names")
     List<Student> findAll();
 
-    //指定したidに紐ずくユーザーのレコードが存在する時
-    //取得できること
-    //指定したidが存在しない時
-    //取得できない（空のOptionalを返す）
+    /*指定したidに紐ずくユーザーのレコードが存在する時
+    取得できること
+    指定したidが存在しない時
+    取得できない（空のOptionalを返す）*/
     @Select("SELECT * FROM names WHERE id = #{id}")
     Optional<Student> findById(int id);
 
@@ -28,17 +28,17 @@ public interface StudentMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void createUser(StudentForm name);
 
-    //指定したidに紐ずくユーザーが存在する時
-    //更新できること
-    //指定したidに紐ずくユーザーが存在しない時
-    //更新されないこと
+    /*指定したidに紐ずくユーザーが存在する時
+    更新できること
+    指定したidに紐ずくユーザーが存在しない時
+    更新されないこと*/
     @Update("UPDATE names SET name = #{name} WHERE id = #{id}")
     void update(StudentForm name);
 
-    //指定したidに紐ずくユーザーが存在する時
-    //削除する
-    //指定したidに紐ずくユーザーが存在しない時
-    //削除されない
+    /*指定したidに紐ずくユーザーが存在する時
+    削除する
+    指定したidに紐ずくユーザーが存在しない時
+    削除されない*/
     @Delete("DELETE FROM names WHERE id = #{id}")
     void deleteById(int id);
 }

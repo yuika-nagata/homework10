@@ -21,19 +21,19 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    //Studentテーブルにレコードが存在する時
-    //全て取得できること
-    //studentテーブルにレコードが存在しない時
-    //空のリストが返ってくること
+    /*Studentテーブルにレコードが存在する時
+    全て取得できること
+    studentテーブルにレコードが存在しない時
+    空のリストが返ってくること*/
     @GetMapping("/names")
     public List<Student> getNames() {
         return studentService.findAll();
     }
 
-    //指定したidのレコードが存在する時
-    //取得できること
-    //指定したidのレコードが存在しない時
-    //例外をthrowすること
+    /*指定したidのレコードが存在する時
+    取得できること
+    指定したidのレコードが存在しない時
+    例外をthrowすること*/
     @GetMapping("/names/{id}")
     public Student getUser(@PathVariable("id") int id) throws Exception {
         return studentService.findById(id);
@@ -50,20 +50,20 @@ public class StudentController {
         return ResponseEntity.created(url).body(Map.of("message", "登録が完了しました。"));
     }
 
-    //指定したidに紐づくユーザーが存在する時
-    //更新できること
-    //指定したidに紐づくユーザーが存在しない時
-    //更新できないこと
+    /*指定したidに紐づくユーザーが存在する時
+    更新できること
+    指定したidに紐づくユーザーが存在しない時
+    更新できないこと*/
     @PatchMapping("names/{id}")
     public Map<String, String> updateUser(@PathVariable("id") int id, @RequestBody @Validated StudentForm name) {
         studentService.updateUser(id, name);
         return Map.of("message", "更新が完了しました。");
     }
 
-    //指定したidに紐づくユーザーが存在する時
-    //削除できること
-    //指定したidに紐づくユーザーが存在しない時
-    //削除されないこと
+    /*指定したidに紐づくユーザーが存在する時
+    削除できること
+    指定したidに紐づくユーザーが存在しない時
+    削除されないこと*/
     @DeleteMapping("names/{id}")
     public Map<String, String> deleteUser(@PathVariable int id) throws Exception {
         studentService.deleteById(id);

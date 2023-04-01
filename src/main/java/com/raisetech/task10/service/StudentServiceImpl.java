@@ -18,45 +18,45 @@ public class StudentServiceImpl implements StudentService {
         this.studentMapper = studentMapper;
     }
 
-    //Studentテーブルにレコードがある時
-    //全てnameMapperのfindAll()にリストで返す
-    //Studentテーブルにレコードが無い時
-    //空のリストをnameMapperのfindAll()に返す
+    /*Studentテーブルにレコードがある時
+    全てnameMapperのfindAll()にリストで返す
+    Studentテーブルにレコードが無い時
+    空のリストをnameMapperのfindAll()に返す*/
     @Override
     public List<Student> findAll() {
         return studentMapper.findAll();
     }
 
-    //Studentテーブルに指定したidのレコードが存在する時
-    //nameMapperのfindById(id)にOptionalで返す
-    //studentテーブルに指定したレコードが存在しない時
-    //例外をthrowする
+    /*Studentテーブルに指定したidのレコードが存在する時
+    nameMapperのfindById(id)にOptionalで返す
+    studentテーブルに指定したレコードが存在しない時
+    例外をthrowする*/
     @Override
     public Student findById(int id) {
         Optional<Student> user = studentMapper.findById(id);
         return studentMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found"));
     }
 
-    //指定した名前でnameMapperのcreateUser(name)に
+    //指定した名前でユーザー登録ができること
     @Override
     public void createUser(StudentForm name) {
         studentMapper.createUser(name);
     }
 
-    //指定したidが存在する時
-    //nameMapperのupdate(name)に
-    //指定したidが存在しない時
-    //例外をthrowする
+    /*指定したidが存在する時
+    名前を変更できること
+    指定したidが存在しない時
+    例外をthrowする*/
     @Override
     public void updateUser(int id, StudentForm name) {
         studentMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found"));
         studentMapper.update(name);
     }
 
-    //指定したidが存在する時
-    //nameMapperのdeleteById(id)に引数を渡す
-    //指定したidが存在しない時
-    //例外をthrowする
+    /*指定したidが存在する時
+    nameMapperのdeleteById(id)に引数を渡す
+    指定したidが存在しない時
+    例外をthrowする*/
     @Override
     public void deleteById(int id) {
         studentMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found"));
