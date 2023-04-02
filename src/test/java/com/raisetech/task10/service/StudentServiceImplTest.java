@@ -27,7 +27,7 @@ class StudentServiceImplTest {
     StudentMapper studentMapper;
 
     @Test
-    public void 全てのユーザーがリストで返えされること() {
+    public void ユーザーが全権取得できること() {
         List<Student> user = List.of(new Student("1", "nagata"), new Student("2", "tanaka"));
         doReturn(user).when(studentMapper).findAll();
         List<Student> actual = nameServiceImpl.findAll();
@@ -35,7 +35,7 @@ class StudentServiceImplTest {
     }
 
     @Test
-    public void 指定したidが存在する時指定のユーザーを返すこと() {
+    public void 対象のユーザーが存在する時対象のユーザーを1件返すこと() {
         Student user = new Student("1", "nagata");
         doReturn(Optional.of(user)).when(studentMapper).findById(1);
         Student actual = nameServiceImpl.findById(1);
@@ -43,7 +43,7 @@ class StudentServiceImplTest {
     }
 
     @Test
-    public void 指定したidが存在しない時例外をthrowすること() {
+    public void 対象のユーザーが存在しない時例外が発生すること() {
         doReturn(Optional.empty()).when(studentMapper).findById(1);
         assertThatThrownBy(() -> nameServiceImpl.findById(1))
                 .isInstanceOf(ResourceNotFoundException.class)
@@ -60,7 +60,7 @@ class StudentServiceImplTest {
     }
 
     @Test
-    public void 名前が更新できること() {
+    public void ユーザーが更新できること() {
 
         StudentForm user = new StudentForm("name", "id");
         doReturn(Optional.of(new Student("1", "nagata"))).when(studentMapper).findById(1);
@@ -69,7 +69,7 @@ class StudentServiceImplTest {
     }
 
     @Test
-    public void 更新対象のidが存在しないときに例外をthrowすること() {
+    public void 更新対象のidが存在しないときに例外が発生すること() {
         doReturn(Optional.empty()).when(studentMapper).findById(1);
         assertThatThrownBy(() -> nameServiceImpl.updateUser(1, new StudentForm("name", "id")))
                 .isInstanceOf(ResourceNotFoundException.class)
@@ -77,14 +77,14 @@ class StudentServiceImplTest {
     }
 
     @Test
-    public void ユーザーが削除できること() {
+    public void 対象のユーザーが1件削除できること() {
         doReturn(Optional.of(new Student("1", "nagata"))).when(studentMapper).findById(1);
         nameServiceImpl.deleteById(1);
         verify(studentMapper).deleteById(1);
     }
 
     @Test
-    public void 削除対象のidが存在しないときに例外をthrowすること() {
+    public void 削除対象のユーザーが存在しないときに例外が発生すること() {
         doReturn(Optional.empty()).when(studentMapper).findById(1);
         assertThatThrownBy(() -> nameServiceImpl.deleteById(1))
                 .isInstanceOf(ResourceNotFoundException.class)

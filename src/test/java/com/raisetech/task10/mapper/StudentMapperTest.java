@@ -32,7 +32,7 @@ class StudentMapperTest {
     @Test
     @DataSet(value = "datasets/students.yml")
     @Transactional
-    void すべてのユーザーが取得できること() {
+    void ユーザーが全権取得できること() {
         List<Student> students = studentMapper.findAll();
         List<Student> user = List.of(students.get(0), students.get(1), students.get(2));
         assertThat(students)
@@ -42,14 +42,14 @@ class StudentMapperTest {
 
     @Test
     @DataSet(value = "empty.yml")
-    void 指定したidが存在しない場合に空のListが取得できること() {
+    void 対象のユーザーが存在しない場合に空のListが取得できること() {
         Optional<Student> students = studentMapper.findById(1);
         assertThat(students).isEmpty();
     }
 
     @Test
     @DataSet(value = "datasets/students.yml")
-    void 指定したidに対応した名前を取得できること() {
+    void 対象のユーザーが存在する時対象のユーザーを1件取得できること() {
         Optional<Student> student = studentMapper.findById(1);
         assertThat(student).contains(student.get());
     }
@@ -69,14 +69,14 @@ class StudentMapperTest {
     @Test
     @DataSet(value = "datasets/update.yml")
     @ExpectedDataSet(value = "expectedAfterUpdateStudents.yml")
-    void 名前が更新できること() {
+    void ユーザーが更新できること() {
         studentMapper.update(new StudentForm("nagata", "1"));
     }
 
     @Test
     @DataSet(value = "datasets/students.yml")
     @ExpectedDataSet(value = "expectedAfterDeleteStudents.yml")
-    void ユーザーが削除できること() {
+    void 対象のユーザーが1件削除できること() {
         assertThat(studentMapper.findAll())
                 .hasSize(3);
         studentMapper.deleteById(1);
