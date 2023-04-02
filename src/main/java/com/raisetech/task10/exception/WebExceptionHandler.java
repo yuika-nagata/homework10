@@ -18,7 +18,7 @@ public class WebExceptionHandler {
                 "timestamp", ZonedDateTime.now().toString(),
                 "status", String.valueOf(HttpStatus.NOT_FOUND.value()),
                 "error", HttpStatus.NOT_FOUND.getReasonPhrase(),
-                "message", "存在しないIDです",
+                "message", e.getMessage(),
                 "path", request.getRequestURI());
         return new ResponseEntity(body,HttpStatus.NOT_FOUND);
     }
